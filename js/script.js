@@ -5,57 +5,67 @@
 // il prezzo del biglietto è definito in base ai km (0.21 € al km)
 // -va applicato uno sconto del 20% per i minorenni
 // -va applicato uno sconto del 40% per gli over 65.
-
-// const inputNomeCognome = document.querySelector("#nome-cognome").value;
-
-// const inputKm = document.querySelector("#km").value;
-
-// const inputEta = document.querySelector("#eta").value;
-
 const buttonGenera = document.getElementById("btnGenera");
-
-const buttonAnnulla = document.querySelector("#btnAnnulla");
+const buttonAnnulla = document.getElementById("btnAnnulla");
+let ciccio = document.getElementById("ticket").style.display = "none";
 
 
 buttonGenera.addEventListener("click", function() {
-    
-    const inputNomeCognome = document.querySelector("#nome-cognome").value;
 
-    const inputKm = parseInt(document.querySelector("#km").value);
+    let nomeCognome = document.getElementById("nome-cognome").value;
 
-    const inputEta = parseInt(document.querySelector("#eta").value);
+    let km = parseInt(document.getElementById("km").value);
 
-    if(inputNomeCognome != '' && !isNaN(inputKm) && inputEta != '' && !isNaN(inputEta) ) {
+    let eta = parseInt(document.getElementById("eta").value);
 
-        alert("Devi inserire un numero! Il campo non può essere vuoto o contenere caratteri!!");
-        // km = parseInt(prompt("Quanti Kilometri vuoi percorrere?"));
-        if (inputKm <= 10) { 
 
-            alert("Minimo Kilometri inseribili 11");
-            // km = parseInt(prompt("Quanti Kilometri vuoi percorrere?"));
-        }else if (inputKm > 3000) {
+    if( km != '' && isNaN(km)) {
 
-            alert("Massimo Kilometri inseribili è 3000");
-            // km = parseInt(prompt("Quanti Kilometri vuoi percorrere?"));
-        }else if (inputEta < 18) {
+        alert("Devi inserire un numero! Il campo non può essere vuoto!!");
 
-            prezzo -= prezzo * (20 / 100);
+    }else if( km <= 10 || km > 3000) {
 
-        }else if ( inputEta >= 65) {
+        alert("Minimo Kilometri inseribili 11 e massimo 3000!!");
 
-            prezzo -= prezzo * (40 / 100);
+    }else if( nomeCognome == '' || !isNaN(nomeCognome)) {
 
-        }
+        alert("Devi inserire un numero! Il campo non può essere vuoto!!");
     }
 
-    let prezzo = inputKm * 0.21;
-    
+
+    let prezzo = km * 0.21;
+
+    let tipoOfferta = "Biglietto standard"; 
+
+    if( eta === "minorenne") {
+        
+        prezzo -= prezzo * (20 / 100);
+        tipoOfferta = "Sconto Minorenni";
+
+    } else if( eta === "over") {
+
+        prezzo -= prezzo * (40 / 100);
+        tipoOfferta = "Sconto Over";
+
+    }
+
     prezzo = prezzo.toFixed(2);
 
-    document.getElementById("nome-passegero").innerHTML = inputNomeCognome;
-    document.getElementById("offerta").innerHTML = tipoOfferta;
-    document.getElementById("numero-carrozza").innerHTML = Math.floor(Math.random() *5) +1;
-    document.getElementById("numero-cp").innerHTML = Math.floor(Math.random() * 99000) +1;
+    document.getElementById("nome-passeggero").innerHTML = nomeCognome;
+    document.getElementById("offerta-biglietto").innerHTML = tipoOfferta;
+    document.getElementById("numero-carrozza").innerHTML = Math.floor(Math.random() * 10) +1;
+    document.getElementById("numero-cp").innerHTML = Math.floor(Math.random() * 90000) +1;
     document.getElementById("prezzo-biglietto").innerHTML = `${prezzo} €`;
+    document.getElementById("ticket").style.display = "block";
     
+});
+
+
+buttonAnnulla.addEventListener("click", function() {
+
+    document.getElementById("ticket").style.display = "none";
+    document.getElementById("nome-cognome").value = "";
+    document.getElementById("km").value = "";
+    document.getElementById("eta").value = "Seleziona";
+
 });
