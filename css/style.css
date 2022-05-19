@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg_primary: #b91450;
+}
+
+.box-biglietto {
+    color: var(--bg_primary);
+}
+
+.bg-main {
+    background-color: var(--bg_primary);
+    height: 100vh;
+}
+
+.form label {
+    margin-bottom: 20px;
+}
+
+.box-grey-nome {
+    background-color: #808080;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: transparent;
+    padding: 30px;
+}
+
