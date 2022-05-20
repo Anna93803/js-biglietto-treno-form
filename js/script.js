@@ -7,7 +7,7 @@
 // -va applicato uno sconto del 40% per gli over 65.
 const buttonGenera = document.getElementById("btnGenera");
 const buttonAnnulla = document.getElementById("btnAnnulla");
-let ciccio = document.getElementById("ticket").style.display = "none";
+let dNone = document.getElementById("ticket").style.display = "none";
 
 
 buttonGenera.addEventListener("click", function() {
@@ -66,6 +66,6 @@ buttonAnnulla.addEventListener("click", function() {
     document.getElementById("ticket").style.display = "none";
     document.getElementById("nome-cognome").value = "";
     document.getElementById("km").value = "";
-    document.getElementById("eta").value = "Seleziona";
+    document.getElementById("seleziona").value = "Seleziona";
 
 });
