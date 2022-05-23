@@ -16,7 +16,9 @@ buttonGenera.addEventListener("click", function() {
 
     let km = parseInt(document.getElementById("km").value);
 
-    let eta = parseInt(document.getElementById("eta").value);
+    let eta = document.getElementById("eta").value;
+
+    console.log(eta);
 
 
     if( km != '' && isNaN(km)) {
@@ -35,14 +37,14 @@ buttonGenera.addEventListener("click", function() {
 
     let prezzo = km * 0.21;
 
-    let tipoOfferta = "Biglietto standard"; 
-
-    if( eta === "minorenne") {
+    let tipoOfferta = "Biglietto Standard"; 
+    
+    if( eta == "minorenne") {
         
         prezzo -= prezzo * (20 / 100);
         tipoOfferta = "Sconto Minorenni";
 
-    } else if( eta === "over") {
+    } else if( eta == "over") {
 
         prezzo -= prezzo * (40 / 100);
         tipoOfferta = "Sconto Over";
@@ -66,6 +68,10 @@ buttonAnnulla.addEventListener("click", function() {
     document.getElementById("ticket").style.display = "none";
     document.getElementById("nome-cognome").value = "";
     document.getElementById("km").value = "";
-    document.getElementById("seleziona").value = "Seleziona";
+    document.getElementById("eta").value = "";
 
 });
+
+
+// Non funziona la select del biglietto, cioè mi appare sempre biglietto standard
+// poi non si svuota il cambo dell'età una volta cliccato sul button annulla
